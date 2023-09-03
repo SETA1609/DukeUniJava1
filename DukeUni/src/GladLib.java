@@ -9,6 +9,7 @@ public class GladLib {
 	private ArrayList<String> nameList;
 	private ArrayList<String> animalList;
 	private ArrayList<String> timeList;
+	private ArrayList<String> verbList;
 	
 	private Random myRandom;
 	
@@ -32,7 +33,9 @@ public class GladLib {
 		countryList = readIt(source+"/country.txt");
 		nameList = readIt(source+"/name.txt");		
 		animalList = readIt(source+"/animal.txt");
-		timeList = readIt(source+"/timeframe.txt");		
+		timeList = readIt(source+"/timeframe.txt");
+		verbList = readIt(source+"/verb.txt");
+
 	}
 	
 	private String randomFrom(ArrayList<String> source){
@@ -61,6 +64,9 @@ public class GladLib {
 		}
 		if (label.equals("timeframe")){
 			return randomFrom(timeList);
+		}
+		if (label.equals("verb")){
+			return randomFrom(verbList);
 		}
 		if (label.equals("number")){
 			return ""+myRandom.nextInt(50)+5;
