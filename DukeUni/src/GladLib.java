@@ -10,21 +10,23 @@ public class GladLib {
 	private ArrayList<String> animalList;
 	private ArrayList<String> timeList;
 	private ArrayList<String> verbList;
-
 	private ArrayList<String> fruitList;
+	private HashSet<String> usedWords;
 
 	private Random myRandom;
 	
 	private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
-	private static String dataSourceDirectory = "data";
+	private static String dataSourceDirectory = "datalong";
 	
 	public GladLib(){
 		initializeFromSource(dataSourceDirectory);
+		usedWords=new HashSet<>();
 		myRandom = new Random();
 	}
 	
 	public GladLib(String source){
 		initializeFromSource(source);
+		usedWords=new HashSet<>();
 		myRandom = new Random();
 	}
 	
@@ -43,7 +45,8 @@ public class GladLib {
 	
 	private String randomFrom(ArrayList<String> source){
 		int index = myRandom.nextInt(source.size());
-		return source.get(index);
+		String randomWord= source.get(index);
+		return randomWord;
 	}
 	
 	private String getSubstitute(String label) {
@@ -89,6 +92,12 @@ public class GladLib {
 		String prefix = w.substring(0,first);
 		String suffix = w.substring(last+1);
 		String sub = getSubstitute(w.substring(first+1,last));
+		if (usedWords.contains(sub)){
+			do {
+				sub = getSubstitute(w.substring(first+1,last));
+			} while (usedWords.contains(sub));
+		}
+		usedWords.add(sub); // Add the word to the usedWords set
 		return prefix+sub+suffix;
 	}
 	
@@ -139,11 +148,17 @@ public class GladLib {
 	}
 	
 	public void makeStory(){
+		usedWords.clear();
 	    System.out.println("\n");
-		String story = fromTemplate("data/madtemplate2.txt");
+		String story = fromTemplate("datalong/madtemplate2.txt");
 		printOut(story, 60);
 	}
-	
 
+	public HashSet<String> getUsedWords() {
+		return usedWords;
+	}
 
+	public void setUsedWords(HashSet<String> usedWords) {
+		this.usedWords = usedWords;
+	}
 }
