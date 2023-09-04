@@ -1,9 +1,24 @@
 import java.util.HashMap;
 
 public class CodonCount {
-private HashMap<String,Integer> CodonCounter;
+    private HashMap<String, Integer> codonCounter;
 
     public CodonCount() {
-        CodonCounter = new HashMap<>();
+        codonCounter = new HashMap<>();
     }
+
+    public void buildCodonMap(int start, String dna) {
+        codonCounter.clear();
+        if (start < 0 || start > 2) {
+            System.out.println("Please enter a number between 0 and 2");
+            return;
+        }
+
+        for (int i = start; i + 2 < dna.length(); i += 3) {
+            String codon = dna.substring(i, i + 3);
+            codonCounter.put(codon,codonCounter.getOrDefault(codon,0)+1);
+        }
+    }
+
+
 }
