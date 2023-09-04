@@ -1,4 +1,7 @@
+import edu.duke.FileResource;
+
 import java.util.*;
+
 
 public class CodonCount {
     private HashMap<String, Integer> codonCounter;
@@ -34,12 +37,28 @@ public class CodonCount {
 
     public void printCodonCounts(int start, int end) {
         for (Map.Entry<String, Integer> codon : codonCounter.entrySet()) {
-            if (codon.getValue() >= start && end>= codon.getValue()) {
-                System.out.println(codon.getKey()+" has a count of: "+codon.getValue());
+            if (codon.getValue() >= start && end >= codon.getValue()) {
+                System.out.println(codon.getKey() + " has a count of: " + codon.getValue());
             }
         }
     }
 
+    public void tester() {
+        FileResource fr = new FileResource();
+        String dna = fr.toString().toUpperCase();
+        //case 0
+        buildCodonMap(0,dna);
+        System.out.println("The most common codon is: "+getMostCommonCodon());
+        printCodonCounts(1,5);
+        //case1
+        buildCodonMap(1,dna);
+        System.out.println("The most common codon is: "+getMostCommonCodon());
+        printCodonCounts(1,5);
+        //case2
+        buildCodonMap(2,dna);
+        System.out.println("The most common codon is: "+getMostCommonCodon());
+        printCodonCounts(1,5);
+    }
 
 
 }
