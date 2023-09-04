@@ -21,15 +21,25 @@ public class CodonCount {
     }
 
     public String getMostCommonCodon() {
-        String mostCommonCodon="";
-        int tmp=0;
+        String mostCommonCodon = "";
+        int tmp = 0;
         for (Map.Entry<String, Integer> codon : codonCounter.entrySet()) {
-                 if (codon.getValue()>tmp){
-                     mostCommonCodon=codon.getKey();
-                     tmp=codon.getValue();
-                 }
+            if (codon.getValue() > tmp) {
+                mostCommonCodon = codon.getKey();
+                tmp = codon.getValue();
+            }
         }
         return mostCommonCodon;
     }
+
+    public void printCodonCounts(int start, int end) {
+        for (Map.Entry<String, Integer> codon : codonCounter.entrySet()) {
+            if (codon.getValue() >= start && end>= codon.getValue()) {
+                System.out.println(codon.getKey()+" has a count of: "+codon.getValue());
+            }
+        }
+    }
+
+
 
 }
