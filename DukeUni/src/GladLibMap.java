@@ -60,6 +60,7 @@ public class GladLibMap {
         return randomFrom(myMap.get(label));
     }
 
+    //o^n
     private String processWord(String w) {
         int first = w.indexOf("<");
         int last = w.indexOf(">", first);
@@ -79,6 +80,7 @@ public class GladLibMap {
         return prefix + sub + suffix;
     }
 
+    //o^n
     private void printOut(String s, int lineWidth) {
         int charsWritten = 0;
         for (String w : s.split("\\s+")) {
@@ -139,6 +141,14 @@ public class GladLibMap {
         this.usedWords = usedWords;
     }
 
+    public HashSet<String> getUsedCategories() {
+        return usedCategories;
+    }
+
+    public void setUsedCategories(HashSet<String> usedCategories) {
+        this.usedCategories = usedCategories;
+    }
+
     //o^n
     public int totalWordsInMap() {
         int total = 0;
@@ -161,8 +171,16 @@ public class GladLibMap {
         }
     }
 
+    //o^n
     public int totalWordsConsidered() {
+        getAllUsedCategories();
+        int total = 0;
 
+        for (String category : usedCategories) {
+            total += myMap.get(category).size();
+        }
+
+        return total;
     }
 
 }
