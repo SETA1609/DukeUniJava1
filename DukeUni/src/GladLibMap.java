@@ -7,6 +7,8 @@ public class GladLibMap {
     private HashMap<String,ArrayList<String>>myMap;
 
     private HashSet<String> usedWords;
+    private HashSet<String> usedCategories;
+
 
     private Random myRandom;
 
@@ -16,12 +18,14 @@ public class GladLibMap {
     public GladLibMap(){
         initializeFromSource(dataSourceDirectory);
         usedWords=new HashSet<>();
+        usedCategories=new HashSet<>();
         myRandom = new Random();
     }
 
     public GladLibMap(String source){
         initializeFromSource(source);
         usedWords=new HashSet<>();
+        usedCategories=new HashSet<>();
         myRandom = new Random();
     }
 
