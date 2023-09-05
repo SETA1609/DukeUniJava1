@@ -3,6 +3,6 @@ public class Main {
         GladLibMap gL = new GladLibMap();
         gL.makeStory();
         System.out.println();
-        System.out.println("Number of words replaced: "+gL.getUsedWords().size());
+        System.out.println(gL.totalWordsInMap());
     }
 }

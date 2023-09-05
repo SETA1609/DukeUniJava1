@@ -1,10 +1,7 @@
 import edu.duke.FileResource;
 import edu.duke.URLResource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class GladLibMap {
     private HashMap<String,ArrayList<String>>myMap;
@@ -136,5 +133,15 @@ public class GladLibMap {
 
     public void setUsedWords(HashSet<String> usedWords) {
         this.usedWords = usedWords;
+    }
+
+    public int totalWordsInMap(){
+        int total=0;
+
+        for (Map.Entry<String,ArrayList<String>>entry: myMap.entrySet()) {
+            total+=entry.getValue().size();
+        }
+
+        return total;
     }
 }
