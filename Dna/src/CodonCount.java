@@ -50,15 +50,15 @@ public class CodonCount {
         String dna = fr.asString().toUpperCase();
         //case 0
         buildCodonMap(0,dna);
-        System.out.println("The most common codon is: "+getMostCommonCodon());
+        System.out.println("The most common codon is: "+getMostCommonCodon()+" with: "+codonCounter.get(getMostCommonCodon()));
         printCodonCounts(1,5);
         //case1
         buildCodonMap(1,dna);
-        System.out.println("The most common codon is: "+getMostCommonCodon());
+        System.out.println("The most common codon is: "+getMostCommonCodon()+" with: "+codonCounter.get(getMostCommonCodon()));
         printCodonCounts(1,5);
         //case2
         buildCodonMap(2,dna);
-        System.out.println("The most common codon is: "+getMostCommonCodon());
+        System.out.println("The most common codon is: "+getMostCommonCodon()+" with: "+codonCounter.get(getMostCommonCodon()));
         printCodonCounts(1,5);
     }
 

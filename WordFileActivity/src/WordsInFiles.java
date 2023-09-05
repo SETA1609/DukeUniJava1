@@ -15,7 +15,11 @@ public class WordsInFiles {
         String fileName = f.getName();
         FileResource fr = new FileResource(f);
         String[] fileWords = fr.asString().toLowerCase().split(" ");
-        ArrayList<String> currentFile = new ArrayList<>(List.of(fileWords));
+        ArrayList<String> currentFile = new ArrayList<>();
+        for (String word:fileWords) {
+
+            //I was here
+        }
         for (String word : currentFile) {
             word = word.toLowerCase().trim();
             ArrayList<String> filenames = wordToFileNamesMap.get(word);
@@ -53,18 +57,19 @@ public class WordsInFiles {
         return biggestNumber;
     }
 
-    public ArrayList<String> wordsInNumFiles(int numberOfFiles) {
-        ArrayList<String> words = new ArrayList<>();
+    public HashSet<String> wordsInNumFiles(int numberOfFiles) {
+        HashSet<String> words = new HashSet<>();
 
         for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
             int currentSize = entry.getValue().size();
-            if (numberOfFiles == currentSize) {
+            if (currentSize==numberOfFiles){
                 words.add(entry.getKey());
             }
         }
 
         return words;
     }
+
 
     public void printFilesIn(String word) {
         for (String file : wordToFileNamesMap.get(word)) {
@@ -75,7 +80,7 @@ public class WordsInFiles {
     public void test() {
         buildWordFileMap();
         int maxNumberOfFiles = maxNumber();
-        ArrayList<String> wordsInMostFiles = wordsInNumFiles(maxNumberOfFiles);
+        HashSet<String> wordsInMostFiles = wordsInNumFiles(maxNumberOfFiles);
         for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
             String word = entry.getKey();
             if (wordsInMostFiles.contains(word)) {
@@ -84,5 +89,26 @@ public class WordsInFiles {
             }
         }
         System.out.println(wordsInMostFiles.toString());
+    }
+
+    public void getFileWithoutWord(String word){
+        HashSet<String> filesWithoutWord=new HashSet<>();
+        for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()){
+
+                for (String file: entry.getValue()) {
+                    if (!wordToFileNamesMap.get(word).contains(file)){
+                        filesWithoutWord.add(file);
+                    }
+                }
+        }
+        System.out.println("The files without this word are: "+ filesWithoutWord);
+    }
+
+    public HashMap<String, ArrayList<String>> getWordToFileNamesMap() {
+        return wordToFileNamesMap;
+    }
+
+    public void setWordToFileNamesMap(HashMap<String, ArrayList<String>> wordToFileNamesMap) {
+        this.wordToFileNamesMap = wordToFileNamesMap;
     }
 }
