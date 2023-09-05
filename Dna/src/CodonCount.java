@@ -18,8 +18,10 @@ public class CodonCount {
         }
 
         for (int i = start; i + 2 < dna.length(); i += 3) {
+            dna=dna.trim();
             String codon = dna.substring(i, i + 3);
             codonCounter.put(codon, codonCounter.getOrDefault(codon, 0) + 1);
+
         }
     }
 
