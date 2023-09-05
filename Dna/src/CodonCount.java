@@ -45,7 +45,7 @@ public class CodonCount {
 
     public void tester() {
         FileResource fr = new FileResource();
-        String dna = fr.toString().toUpperCase();
+        String dna = fr.asString().toUpperCase();
         //case 0
         buildCodonMap(0,dna);
         System.out.println("The most common codon is: "+getMostCommonCodon());
