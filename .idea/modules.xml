@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Dna/Dna.iml" filepath="$PROJECT_DIR$/Dna/Dna.iml" />
       <module fileurl="file://$PROJECT_DIR$/DukeUni/DukeUni.iml" filepath="$PROJECT_DIR$/DukeUni/DukeUni.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DukeUniJava1.iml" filepath="$PROJECT_DIR$/.idea/DukeUniJava1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WordFileActivity/WordFileActivity.iml" filepath="$PROJECT_DIR$/WordFileActivity/WordFileActivity.iml" />
     </modules>
   </component>
 </project>
