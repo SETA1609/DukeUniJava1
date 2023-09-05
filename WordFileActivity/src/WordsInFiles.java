@@ -2,10 +2,7 @@ import edu.duke.DirectoryResource;
 import edu.duke.FileResource;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class WordsInFiles {
     private HashMap<String, ArrayList<String>> wordToFileNamesMap;
@@ -20,7 +17,7 @@ public class WordsInFiles {
         String[] fileWords = fr.asString().toLowerCase().split(" ");
         ArrayList<String> currentFile = new ArrayList<>(List.of(fileWords));
         for (String word : currentFile) {
-
+            word = word.toLowerCase().trim();
             ArrayList<String> filenames = wordToFileNamesMap.get(word);
 
             if (filenames == null) {
@@ -57,11 +54,11 @@ public class WordsInFiles {
     }
 
     public ArrayList<String> wordsInNumFiles(int numberOfFiles) {
-        ArrayList<String> words= new ArrayList<>();
+        ArrayList<String> words = new ArrayList<>();
 
         for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
             int currentSize = entry.getValue().size();
-            if (numberOfFiles ==currentSize) {
+            if (numberOfFiles == currentSize) {
                 words.add(entry.getKey());
             }
         }
@@ -69,11 +66,23 @@ public class WordsInFiles {
         return words;
     }
 
-    public void printFilesIn(String word){
-        for (String file:wordToFileNamesMap.get(word)) {
+    public void printFilesIn(String word) {
+        for (String file : wordToFileNamesMap.get(word)) {
             System.out.println(file);
         }
     }
 
-
+    public void test() {
+        buildWordFileMap();
+        int maxNumberOfFiles = maxNumber();
+        ArrayList<String> wordsInMostFiles = wordsInNumFiles(maxNumberOfFiles);
+        for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
+            String word = entry.getKey();
+            if (wordsInMostFiles.contains(word)) {
+                System.out.println(word + " is in this list of files: ");
+                printFilesIn(word);
+            }
+        }
+        System.out.println(wordsInMostFiles.toString());
+    }
 }
