@@ -44,17 +44,28 @@ public class WordsInFiles {
     }
 
     public int maxNumber() {
-        int biggestNumber=0;
+        int biggestNumber = 0;
 
-        for (Map.Entry<String,ArrayList<String>> entry:wordToFileNamesMap.entrySet()) {
-            int currentSize=entry.getValue().size();
-            if (biggestNumber<currentSize){
-                biggestNumber=currentSize;
+        for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
+            int currentSize = entry.getValue().size();
+            if (biggestNumber < currentSize) {
+                biggestNumber = currentSize;
             }
         }
 
         return biggestNumber;
     }
 
+    public ArrayList<String> wordsInNumFiles(int numberOfFiles) {
+        ArrayList<String> words= new ArrayList<>();
 
+        for (Map.Entry<String, ArrayList<String>> entry : wordToFileNamesMap.entrySet()) {
+            int currentSize = entry.getValue().size();
+            if (numberOfFiles ==currentSize) {
+                words.add(entry.getKey());
+            }
+        }
+
+        return words;
+    }
 }
