@@ -68,4 +68,12 @@ public class WordsInFiles {
 
         return words;
     }
+
+    public void printFilesIn(String word){
+        for (String file:wordToFileNamesMap.get(word)) {
+            System.out.println(file);
+        }
+    }
+
+
 }
